@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -39,6 +38,7 @@ public class Main {
                             System.out.print("escolha o item que deseja remover: ");
                             int itemToRemove = scanner.nextInt();
                             carrinhoDeCompras.remove(itemToRemove);
+                            System.out.println("Item removido com sucesso!");
                         } catch (Exception e) {
                             System.out.println("Não foi possível remover o item pois ele não existe.");
                         }
@@ -67,7 +67,7 @@ public class Main {
                                         System.out.println("Não foi possível alterar o preço do item");
                                     }
                                 } else {
-                                    System.out.println("não foi possível alterar este dado pois ele não existe");
+                                    System.out.println("Opção inválida. Nenhum dado foi alterado.");
                                 }
                             } else {
                                 System.out.println("Este item não existe");
@@ -77,16 +77,20 @@ public class Main {
                         }
                         break;
                     case 4:
-                        System.out.println(carrinhoDeCompras);
+                        System.out.println("Carrinho de Compras:");
+                        for (Map.Entry<Integer, Item> entry : carrinhoDeCompras.entrySet()) {
+                            System.out.println(entry.getKey() + ": " + entry.getValue());
+                        }
                         break;
                     case 5:
                         scanner.close();
                         return;
                     default:
-                        System.out.println("escolha uma opção válida");
+                        System.out.println("Escolha uma opção válida");
                 }
             } catch (Exception e) {
                 System.out.println("Digite um valor válido");
+                scanner.nextLine(); // Consume newline
             }
         }
     }
@@ -125,4 +129,3 @@ class Item {
                 '}';
     }
 }
-
